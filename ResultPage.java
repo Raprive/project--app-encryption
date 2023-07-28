@@ -6,16 +6,24 @@ import java.awt.event.ActionListener;
 public class ResultPage extends JFrame implements ActionListener {
 
     JButton backBtn;
+    static JLabel result;
+    static JLabel resultTranslate;
 
     ResultPage(String message) {
 
-        JLabel result = new JLabel();
+        result = new JLabel();
         result.setForeground(Color.white);
         result.setText("Kodenya adalah " + TesKalimat.tesTipeInput(message));
-        result.setFont(new Font(null,Font.PLAIN,20));
+        result.setFont(new Font(null,Font.PLAIN,15));
+
+        resultTranslate = new JLabel();
+        resultTranslate.setForeground(Color.white);
+        resultTranslate.setText("Terjemahan adalah " + TesKalimat.tesTipeInput2((message)));
+        resultTranslate.setFont(new Font(null,Font.PLAIN,15));
 
         JPanel containerResult = new JPanel();
         containerResult.add(result);
+        containerResult.add(resultTranslate);
         containerResult.setBackground(Color.black);
 
         backBtn = new JButton();

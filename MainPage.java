@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ public class MainPage extends JFrame implements ActionListener {
     JPanel containerText;
     JPanel containerSubmit;
     JButton submit;
+    JButton translate;
     static JTextField msg;
     JLabel label;
 
@@ -16,16 +18,26 @@ public class MainPage extends JFrame implements ActionListener {
         submit = new JButton();
         submit.setText("Submit");
         submit.setFocusable(false);
-        submit.setFont(new Font(null,Font.PLAIN,13));
+        submit.setFont(new Font(null,Font.PLAIN,11));
         submit.setBackground(Color.lightGray);
         submit.addActionListener(this);
-        submit.setBounds(20,23,80,50);
+        submit.setBounds(20,23,90,30);
+
+        translate = new JButton();
+        translate.setText("Translate");
+        translate.setFocusable(false);
+        translate.setFont(new Font(null,Font.PLAIN,11));
+        translate.setBackground(Color.lightGray);
+        translate.addActionListener(this);
+        translate.setBounds(20,57,90,30);
+
 
         containerSubmit = new JPanel();
         containerSubmit.setBounds(0,50,100,140);
         containerSubmit.setBackground(Color.black);
         containerSubmit.setLayout(null);
         containerSubmit.add(submit);
+        containerSubmit.add(translate);
 
         msg = new JTextField();
         msg.setBounds(130,30,270,30);
@@ -64,6 +76,15 @@ public class MainPage extends JFrame implements ActionListener {
         if(e.getSource()==submit) {
             this.setVisible(false);
             new ResultPage(msg.getText());
+            ResultPage.resultTranslate.setVisible(false);
+        }
+
+        if(e.getSource()==translate) {
+            this.setVisible(false);
+            new ResultPage(msg.getText());
+            ResultPage.result.setVisible(false);
+            ResultPage.resultTranslate.setVisible(true);
         }
     }
+
 }
